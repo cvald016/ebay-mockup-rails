@@ -1,0 +1,36 @@
+<br>
+<br>
+<h1>Edit Your Product Image Here!</h1>
+<h4>(The latest upload will be your main image.)</h4>
+
+
+<% if !flash[:notice].blank? %>
+  <div class="alert alert-info">
+  <%= flash[:notice] %>
+  </div>
+<% end %>
+<br />
+<br>
+<br>
+<br>
+<br>
+<%= link_to "New Product Image", new_product_path, class: "btn btn-primary" %>
+<br />
+<br />
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+
+      <th>&nbsp; ACTIONS </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= button_to "Delete",  product, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{product.title}?" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
